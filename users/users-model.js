@@ -1,4 +1,8 @@
 const db = require("../data/dbConfig.js");
+const jwt = require('jsonwebtoken');
+const secrets = require('../api/secrets.js')
+
+
 
 module.exports = {
   add,
@@ -7,8 +11,17 @@ module.exports = {
   findById,
 };
 
-function find() {
-  return db("users").select("id", "username");
+function find(token) {
+    var grab;
+    jwt.verify(token, secrets.jwtSecret, (error,decodedToken) => {
+            grab = decodedToken;
+    })
+
+  return db("users")
+  .select("id", "username","department")
+  .where("department",grab.department)
+  
+
 }
 
 function findBy(filter) {

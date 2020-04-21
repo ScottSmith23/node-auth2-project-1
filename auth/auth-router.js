@@ -50,6 +50,7 @@ function generateToken(user) {
   const payload = {
     userId: user.id,
     username: user.username,
+    department: user.department,
     message: 'Yolo my swaggies'
   }
 

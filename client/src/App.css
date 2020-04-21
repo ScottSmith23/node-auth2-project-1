@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+
+.usercard{
+  border: 1px solid black;
+  margin-bottom: 20px;
+  width:300px;
+}
+
+.userlist{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.userstuff{
+  display: flex;
+  justify-content: center;
+}

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import {axiosWithAuth} from '../utils/axioswithAuth';
 
 const UserPage = () => {
   const [userList, setUserList] = useState([]);
-  const [isAuth, setIsAuth] = useState(false);
-  axios.defaults.withCredentials = true
+
+
 
   useEffect(() => {
     getUsers();
@@ -13,8 +12,8 @@ const UserPage = () => {
 
   const getUsers = () => {
 
-    axios
-    .get('http://localhost:5000/api/users',{withCredentials: true})
+    axiosWithAuth()
+    .get('http://localhost:5000/api/users')
     .then(res => {
       console.log(res.data);
       setUserList(res.data)
@@ -24,13 +23,24 @@ const UserPage = () => {
 
   return (
     <>
+    <h1>User list</h1>
+    <div className='userstuff'>
+      
+      <div className="userlist">
       {userList.length ? (
         userList.map(user =>
+          <>
+          <div className="usercard">
              <p>Username: {user.username}</p>
+             <p>Department: {user.department}</p>
+             </div>
+             </>
              )
       ) : (
         <p>you are logged isn't</p>
       )}
+      </div>
+    </div>
     </>
   );
 };

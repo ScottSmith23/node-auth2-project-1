@@ -24,8 +24,8 @@ const Login = (props) => {
     axios
       .post('http://localhost:5000/api/login/', state.credentials)
       .then(res => {
-        // res.data.payload
-        console.log(res);
+        console.log(res.data.token);
+        localStorage.setItem('token', JSON.stringify(res.data.token));
         props.history.push('/users');
       })
       .catch(err => console.log(err));

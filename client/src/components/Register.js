@@ -6,7 +6,8 @@ const Register = (props) => {
   const [state,setState] = useState({
     credentials: {
       username: '',
-      password: ''
+      password: '',
+      department: '',
     }
   })
 
@@ -34,12 +35,21 @@ const Register = (props) => {
     return (
       <div>
         <form onSubmit={register}>
+          <p>username</p>
           <input
             type="text"
             name="username"
             value={state.credentials.username}
             onChange={handleChange}
           />
+          <p>department</p>
+          <input
+            type="text"
+            name="department"
+            value={state.credentials.department}
+            onChange={handleChange}
+          />
+          <p>password</p>
           <input
             type="password"
             name="password"
