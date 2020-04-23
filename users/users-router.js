@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
     .then(users => {
       res.json(users);
     })
-    .catch(err => res.send(err));
+    .catch(err => res.status(403).json({ error: "User must be logged in to do that." }));
 });
 
 
